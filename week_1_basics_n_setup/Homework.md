@@ -11,6 +11,7 @@ Which tag has the following text? - *Write the image ID to the file*
 
 
 Output:
+
 ![Jawaban No  1](https://github.com/fachrulghiffari/data-engineering-zoomcamp/assets/104657138/9de8ac1c-7fff-4f32-b1f2-7d55b2832c78)
 
 The answer:
@@ -49,6 +50,7 @@ WHERE lpep_pickup_datetime >= '2019-01-15 00:00:00'
 	AND lpep_dropoff_datetime < '2019-01-15 24:00:00'
 ```
 Output:
+
 ![Jawaban No  3](https://github.com/fachrulghiffari/data-engineering-zoomcamp/assets/104657138/07c6eb8f-9c8b-4c4b-ab1b-c19693ae83a6)
 
 The answer is 20530
@@ -70,6 +72,7 @@ ORDER BY 2 DESC
 LIMIT 5;
 ```
 Output:
+
 ![Jawaban No  4](https://github.com/fachrulghiffari/data-engineering-zoomcamp/assets/104657138/0d64b390-3303-415e-ad10-7a72eacbfe44)
 
 The answer is 2019-01-15
@@ -87,6 +90,7 @@ WHERE DATE(lpep_pickup_datetime) = '2019-01-01'
 GROUP BY 1, 2;
 ```
 Output:
+
 ![Jawaban No  5](https://github.com/fachrulghiffari/data-engineering-zoomcamp/assets/104657138/0db97e13-4b0f-47d4-95c4-8c729e6a201a)
 
 The answer:
@@ -110,6 +114,7 @@ LIMIT 5;
 ```
 
 Output:
+
 ![Jawaban No  6](https://github.com/fachrulghiffari/data-engineering-zoomcamp/assets/104657138/94c775d3-693f-4cca-8adb-68e933bbb725)
 
 The answer: Long Island City/Queens Plaza
