@@ -53,7 +53,7 @@ Output:
 
 ![Jawaban No  3](https://github.com/fachrulghiffari/data-engineering-zoomcamp/assets/104657138/07c6eb8f-9c8b-4c4b-ab1b-c19693ae83a6)
 
-The answer is 20530
+The answer: 20530
 
 ## Question 4
 
@@ -75,7 +75,7 @@ Output:
 
 ![Jawaban No  4](https://github.com/fachrulghiffari/data-engineering-zoomcamp/assets/104657138/0d64b390-3303-415e-ad10-7a72eacbfe44)
 
-The answer is 2019-01-15
+The answer: 2019-01-15
 
 ## Question 5
 
@@ -92,8 +92,6 @@ GROUP BY 1, 2;
 Output:
 
 ![Jawaban No  5](https://github.com/fachrulghiffari/data-engineering-zoomcamp/assets/104657138/0db97e13-4b0f-47d4-95c4-8c729e6a201a)
-
-The answer:
 
 ## Question 6
 For the passengers picked up in the Astoria Zone which was the drop off zone that had the largest tip?
