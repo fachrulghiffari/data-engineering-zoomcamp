@@ -286,3 +286,76 @@ How many rows were processed by the script?
 - 88,605
 - 190,225
 
+#### Solution
+For this question I tried so many times but it didn't work. There is an error like this:
+```
+Script at './week_2_workflow_orchestration/Homework/etl_web_to_gcs_homework_github.py' encountered an exception: FileNotFoundError(2, 'No such file or 
+directory')
+```
+
+Sometime the deployment works, but if I run the flow there is an error like this:
+
+```
+prefect.exceptions.ScriptError: Script at 'etl_web_to_gcs.py' encountered an exception: FileNotFoundError(2, 'No such file or directory')
+```
+PLease contact me if you have solution for my problem, I would be very happy. 
+
+### Question 5
+
+It’s often helpful to be notified when something with your dataflow doesn’t work as planned. Choose one of the options below for creating email or slack notifications.
+
+The hosted Prefect Cloud lets you avoid running your own server and has Automations that allow you to get notifications when certain events occur or don’t occur. 
+
+Create a free forever Prefect Cloud account at app.prefect.cloud and connect your workspace to it following the steps in the UI when you sign up. 
+
+Set up an Automation that will send yourself an email when a flow run completes. Run the deployment used in Q4 for the Green taxi data for April 2019. Check your email to see the notification.
+
+Alternatively, use a Prefect Cloud Automation or a self-hosted Orion server Notification to get notifications in a Slack workspace via an incoming webhook. 
+
+Join my temporary Slack workspace with [this link](https://join.slack.com/t/temp-notify/shared_invite/zt-1odklt4wh-hH~b89HN8MjMrPGEaOlxIw). 400 people can use this link and it expires in 90 days. 
+
+In the Prefect Cloud UI create an [Automation](https://docs.prefect.io/ui/automations) or in the Prefect Orion UI create a [Notification](https://docs.prefect.io/ui/notifications/) to send a Slack message when a flow run enters a Completed state. Here is the Webhook URL to use: https://hooks.slack.com/services/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
+
+Test the functionality.
+
+Alternatively, you can grab the webhook URL from your own Slack workspace and Slack App that you create. 
+
+How many rows were processed by the script?
+
+- `125,268`
+- `377,922`
+- `728,390`
+- `514,392`
+
+#### Solution
+
+**First**, Login to app.prefect.cloud and create API key. And run this command to signin in your cli:
+
+```
+prefect cloud login -k your_IP_KEY
+```
+
+**Second**, deploy the workflow. For workflow I used "link" with some edit in variable month, year, and color.
+Run this command:
+
+```
+prefect deployment build build etl_web_to_gcs.py:etl_web_to_gcs -n with_notification -a
+```
+
+**Third**, In your prefect cloud create email block (for this question I used email instead slack). Then, go to _Automation > Add Automation_.
+
+![6A](https://github.com/fachrulghiffari/data-engineering-zoomcamp/assets/104657138/0fd29d37-57aa-40e6-8b67-42d8290e9d53)
+
+![6B](https://github.com/fachrulghiffari/data-engineering-zoomcamp/assets/104657138/02cb4f4c-fd8e-45d1-8ab0-e1ae0680b078)
+
+**Finally**, Run the flow, you can run through cli or prefect cloud. I used prefect cloud to run the flow.
+
+Ouput:
+![6](https://github.com/fachrulghiffari/data-engineering-zoomcamp/assets/104657138/7571f47f-aa4d-499d-a990-820dae85db4f)
+
+Notification Email:
+![6C](https://github.com/fachrulghiffari/data-engineering-zoomcamp/assets/104657138/16e7db62-0614-45f0-ad33-0a1090e64947)
+
+Flow failed to upload to gcs because I didn't create gcs block like in the Prefect Orion. 
+
+The answer: 514,392
