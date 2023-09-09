@@ -335,7 +335,7 @@ How many rows were processed by the script?
 prefect cloud login -k your_IP_KEY
 ```
 
-**Second**, deploy the workflow. For workflow I used "link" with some edit in variable month, year, and color.
+**Second**, deploy the workflow. For workflow I used ["link"](https://github.com/fachrulghiffari/data-engineering-zoomcamp/blob/main/week_2_workflow_orchestration/Homework/etl_web_to_gcs.py) with some edit in  month, year, and color variable.
 Run this command:
 
 ```
