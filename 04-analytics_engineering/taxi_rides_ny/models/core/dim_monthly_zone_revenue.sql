@@ -24,6 +24,7 @@ with trips_data as (
     sum(congestion_surcharge) as revenue_monthly_congestion_surcharge,
 
     max(total_amount) as highest_total_amount,
+    min(total_amount) as lowest_total_amount
 
     -- Additional calculations
     count(tripid) as total_monthly_trips,
