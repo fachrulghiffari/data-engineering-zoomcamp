@@ -2,7 +2,7 @@ import os
 from typing import Dict, List
 
 from confluent_kafka import Consumer
-from confluent_kafka.schema_registry import SchmeRegistryClient
+from confluent_kafka.schema_registry import SchemaRegistryClient
 from confluent_kafka.schema_registry.avro import AvroDeserializer
 from confluent_kafka.serialization import SerializationContext, MessageField
 
@@ -27,36 +27,36 @@ class RideAvroConsumer:
                                                         schema_str=value_schema_str,
                                                         from_dict=dict_to_ride_record)
         
-        consumer_props = {"bootstrap.servers": props["bootstarp.server"],
+        consumer_props = {"bootstrap.servers": props["bootstrap.servers"],
                           "group.id": "datatalkclubs.taxirides.avro.consumer.2",
                           "auto.offset.reset":"earliest"}
         self.consumer = Consumer(consumer_props)
 
-        @staticmethod
-        def load_xhema(schema_path: str):
-            path = os.path.realpath(os.path.dirname(__file__))
-            with open(f"{path}/{schema_path}")as f:
-                schema_str = f.read()
-            return schema_str
-        
-        def consume_from_kafka(self, topics: List[str]):
-            self.consumer.subscribe(topics=topics)
-            while True:
-                try:
-                    # SIGINT can't be handled when polling, limit timeout to 1 second.
-                    msg = self.consumer.poll(1.0)
-                    if msg is None:
-                        continue
-                    key = self.avro_key_deserializer(msg.key(). SerializationContext(msg.topic(), MessageField.KEY))
-                    record = self.avro_value_deserializer(msg.value().
-                                                          SerializationContext(msg.topic(), MessageField.VALUE))
-                    if record is not None:
-                        print(f"{key}, {record}")
-                except KeyboardInterrupt:
-                    break
+    @staticmethod
+    def load_schema(schema_path: str):
+        path = os.path.realpath(os.path.dirname(__file__))
+        with open(f"{path}/{schema_path}")as f:
+            schema_str = f.read()
+        return schema_str
+    
+    def consume_from_kafka(self, topics: List[str]):
+        self.consumer.subscribe(topics=topics)
+        while True:
+            try:
+                # SIGINT can't be handled when polling, limit timeout to 1 second.
+                msg = self.consumer.poll(1.0)
+                if msg is None:
+                    continue
+                key = self.avro_key_deserializer(msg.key(), SerializationContext(msg.topic(), MessageField.KEY))
+                record = self.avro_value_deserializer(msg.value(),
+                                                        SerializationContext(msg.topic(), MessageField.VALUE))
+                if record is not None:
+                    print(f"{key}, {record}")
+            except KeyboardInterrupt:
+                break
 
 
-if __name__main == "__main__":
+if __name__== "__main__":
     config = {
         "bootstrap.servers": BOOTSTRAP_SERVERS,
         "schema_registry.url": SCHEMA_REGISTRY_URL,
@@ -65,4 +65,4 @@ if __name__main == "__main__":
     }
 
     avro_consumer = RideAvroConsumer(props=config)
-    avro_consumer.consuemr_from_kafka(topics=[KAFKA_TOPIC])
+    avro_consumer.consume_from_kafka(topics=[KAFKA_TOPIC])

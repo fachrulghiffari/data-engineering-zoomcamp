@@ -62,7 +62,7 @@ class RideAvroProducer:
                 ride_keys.append(RideRecordKey(vendor_id=int(row[0])))
         return zip(ride_keys, ride_records)
 
-    def publish(self, topic: str, records: [RideRecordKey, RideRecord]):
+    def publish(self, topic: str, records: list[(RideRecordKey, RideRecord)]):
         for key_value in records:
             key, value = key_value
             try:
