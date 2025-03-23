@@ -1,8 +1,7 @@
-version: "3.6"
 volumes:
   shared-workspace:
     name: "hadoop-distributed-file-system"
-    driver: local
+    external: true
 services:
   jupyterlab:
     image: jupyterlab
